@@ -37,7 +37,7 @@ app.put('/api/users',(req,res)=>{
 
 //DELETE
 app.delete('/api/users/:id',(req,res)=>{
-    const id=req.body.id;
+    const id=req.params.id;
     pool.query(`DELETE FROM profiles WHERE id=?`,[id],(err,rows, fields)=>{
         if(err) throw err;
         res.send({msg:'Data deleted successfully'});
