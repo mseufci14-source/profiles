@@ -36,7 +36,7 @@ app.put('/api/users',(req,res)=>{
 })
 
 //DELETE
-app.delete('/api/users/:id',(req,res)=>{
+app.delete('/api/users/',(req,res)=>{
     const id=req.body.id;
     pool.query(`DELETE FROM profiles WHERE id=?`,[id],(err,rows, fields)=>{
         if(err) throw err;
