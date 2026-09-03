@@ -29,7 +29,7 @@ app.put('/api/users',(req,res)=>{
     const name=req.body.name;
     const email=req.body.email;
     const role=req.body.role;
-    pool.query(`UPDATE profiles SET name=?, email=?, role=?, WHERE id=?`,[name,email,role,id],(err,rows, fields)=>{
+    pool.query(`UPDATE profiles SET name=?, email=?, role=? WHERE id=?`,[name,email,role,id],(err,rows, fields)=>{
         if(err) throw err;
         res.send({msg:'Data updated successfully'});
     })
@@ -37,7 +37,7 @@ app.put('/api/users',(req,res)=>{
 
 //DELETE
 app.delete('/api/users/:id',(req,res)=>{
-    const id=req.params.id;
+    const id=req.body.id;
     pool.query(`DELETE FROM profiles WHERE id=?`,[id],(err,rows, fields)=>{
         if(err) throw err;
         res.send({msg:'Data deleted successfully'});
